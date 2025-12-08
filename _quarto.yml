@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Twenty-Years of Film"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: documentation.qmd
+        text: Documentation
+      - href: tutorial.qmd
+        text: Tutorial
+      - href: technicalReport.qmd
+        text: Technical Report
+      
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

@@ -1,0 +1,9 @@
+---
+title: "Twenty-Years of Film, STAT 386 Final"
+---
+
+Package [Documentation](documentation.qmd)
+
+Get started [here](tutorial.qmd)
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
