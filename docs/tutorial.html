@@ -115,8 +115,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#step-1-clone-the-repository" id="toc-step-1-clone-the-repository" class="nav-link active" data-scroll-target="#step-1-clone-the-repository">Step 1: Clone the Repository</a></li>
+  <li><a href="#step-2-api-access" id="toc-step-2-api-access" class="nav-link" data-scroll-target="#step-2-api-access">Step 2: API Access</a></li>
+  <li><a href="#step-3-api-data-collection" id="toc-step-3-api-data-collection" class="nav-link" data-scroll-target="#step-3-api-data-collection">Step 3: API Data Collection</a>
+  <ul class="collapse">
+  <li><a href="#collect-tmdb-movie-ids" id="toc-collect-tmdb-movie-ids" class="nav-link" data-scroll-target="#collect-tmdb-movie-ids">Collect TMDB Movie IDs</a></li>
+  <li><a href="#fetch-movie-metadata" id="toc-fetch-movie-metadata" class="nav-link" data-scroll-target="#fetch-movie-metadata">Fetch Movie Metadata</a></li>
+  </ul></li>
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">Data Cleaning</a></li>
+  <li><a href="#analysis-visualization" id="toc-analysis-visualization" class="nav-link" data-scroll-target="#analysis-visualization">Analysis &amp; Visualization</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
@@ -124,8 +139,60 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<p>This tutorial will walk you through using the <code>stats386_final_movies</code> package — from collecting the data, cleaning it, and generating analysis and visualizations.</p>
+<hr>
+<section id="step-1-clone-the-repository" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-clone-the-repository">Step 1: Clone the Repository</h2>
+<p>Start by cloning the repository from GitHub and installing the dependencies:</p>
+<p>git clone git@github.com:peacoltrain/stats386_final_movies.git</p>
+<p>cd stats386_final_movies</p>
+<p>python3 -m venv .venv</p>
+<p>source .venv/bin/activate</p>
+<p>pip install -r requirements.txt # or use `pip install -e</p>
+</section>
+<section id="step-2-api-access" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-api-access">Step 2: API Access</h2>
+<p>To collect the data you will need to create a TMDB API key</p>
+<ul>
+<li>Sign up at themoviedb.org</li>
+<li>Go to Settings &gt; API &gt; Create API Key</li>
+<li>Insert your API key into the .env file</li>
+</ul>
+</section>
+<section id="step-3-api-data-collection" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-api-data-collection">Step 3: API Data Collection</h2>
+<p>There are two scripts for collecting the data:</p>
+<section id="collect-tmdb-movie-ids" class="level3">
+<h3 class="anchored" data-anchor-id="collect-tmdb-movie-ids">Collect TMDB Movie IDs</h3>
+<p>python src/stats386_final_movies/dataLoading/getMovieIDs.py</p>
+</section>
+<section id="fetch-movie-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="fetch-movie-metadata">Fetch Movie Metadata</h3>
+<p>python src/stats386_final_movies/dataLoading/getMovieData.py</p>
+<p>This will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))</p>
+<p>Collecting all of the data and full movie metadata will take 50+ hours due to API rate limits</p>
+</section>
+</section>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h2>
+<p>Next, filter and clean the raw data to retain only relevant U.S. based movie information</p>
+<p>python src/stats386_final_movies/dataLoading/clean_movie_data.py</p>
+<p>This will create: cleaned_movies.json - the cleaned dataset of about ~3,500 movies</p>
+</section>
+<section id="analysis-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-visualization">Analysis &amp; Visualization</h2>
+<p>Run the analysis script to generate summary statistics and visualizations:</p>
+<p>python src/stats386_final_movies/analysis_and_visualization.py</p>
+<p>This will: Print relevant stats about the dataset (average revenue, profit, etc…)</p>
+<p>Generate plots of: Profit by year, Profit by genre, Top production companites by average profit</p>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>By following these steps, you can fully reproduce our data pipeline and run exploratory analysis on recent movie trends.</p>
+<p>The project includes data cleaning, analysis, and installable pythong package, and a full documentation and technical report</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
