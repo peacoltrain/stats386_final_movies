@@ -1,3 +1,26 @@
 ---
 Title: "Package Tutorial and Example"
 ---
+
+This tutorial walks you through how to use the `stats386_final_movies` package — from collecting data, to cleaning it, to generating analysis and visualizations.
+
+---
+
+## Step 1: Clone the Repository
+
+Start by cloning the repository from GitHub and installing the dependencies:
+----
+git clone git@github.com:peacoltrain/stats386_final_movies.git
+cd stats386_final_movies
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt  # or use `pip install -e .` if using pyproject.toml
+----
+
+
+## Step 2: API Access
+
+To collect the data you will need to create a TMDB API key
+
+- Sign up at themoviedb.org
+- Insert your API key into the scripts manually 
