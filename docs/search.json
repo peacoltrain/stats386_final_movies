@@ -68,5 +68,75 @@
     "title": "Twenty-Years of Film",
     "section": "",
     "text": "import pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load cleaned dataset\ndf = pd.read_json(\"dataLoading/cleaned_movies.json\")\n\n# Convert release_date to datetime, extract year\ndf[\"release_date\"] = pd.to_datetime(df[\"release_date\"], errors=\"coerce\")\ndf[\"release_year\"] = df[\"release_date\"].dt.year\n\n# Drop rows with missing release_year\ndf = df.dropna(subset=[\"release_year\"])\n\n# Basic plot: Budget vs Revenue\nplt.figure(figsize=(10,6))\nplt.scatter(df[\"budget\"], df[\"revenue\"], alpha=0.5)\nplt.xlabel(\"Budget ($)\")\nplt.ylabel(\"Revenue ($)\")\nplt.title(\"Budget vs Revenue\")\nplt.grid(True)\nplt.show()\n\n\nRunning cells with '.venv (Python 3.12.3)' requires the ipykernel package.\n\nInstall 'ipykernel' into the Python environment. \n\nCommand: '/home/peely/386FinalProject/.venv/bin/python -m pip install ipykernel -U --force-reinstall'"
+  },
+  {
+    "objectID": "tutorial.html",
+    "href": "tutorial.html",
+    "title": "Twenty-Years of Film",
+    "section": "",
+    "text": "This tutorial will walk you through using the stats386_final_movies package — from collecting the data, cleaning it, and generating analysis and visualizations."
+  },
+  {
+    "objectID": "tutorial.html#step-1-clone-the-repository",
+    "href": "tutorial.html#step-1-clone-the-repository",
+    "title": "Twenty-Years of Film",
+    "section": "Step 1: Clone the Repository",
+    "text": "Step 1: Clone the Repository\nStart by cloning the repository from GitHub and installing the dependencies:\ngit clone git@github.com:peacoltrain/stats386_final_movies.git\ncd stats386_final_movies\npython3 -m venv .venv\nsource .venv/bin/activate\npip install -r requirements.txt # or use `pip install -e"
+  },
+  {
+    "objectID": "tutorial.html#start-by-cloning-the-repository-from-github-and-installing-the-dependencies",
+    "href": "tutorial.html#start-by-cloning-the-repository-from-github-and-installing-the-dependencies",
+    "title": "Twenty-Years of Film",
+    "section": "Start by cloning the repository from GitHub and installing the dependencies:",
+    "text": "Start by cloning the repository from GitHub and installing the dependencies:\ngit clone git@github.com:peacoltrain/stats386_final_movies.git\ncd stats386_final_movies\npython3 -m venv .venv\nsource .venv/bin/activate"
+  },
+  {
+    "objectID": "tutorial.html#step-2-api-access",
+    "href": "tutorial.html#step-2-api-access",
+    "title": "Twenty-Years of Film",
+    "section": "Step 2: API Access",
+    "text": "Step 2: API Access\nTo collect the data you will need to create a TMDB API key\n\nSign up at themoviedb.org\nGo to Settings &gt; API &gt; Create API Key\nInsert your API key into the .env file"
+  },
+  {
+    "objectID": "tutorial.html#step-3-api-access",
+    "href": "tutorial.html#step-3-api-access",
+    "title": "Twenty-Years of Film",
+    "section": "Step 3: API Access",
+    "text": "Step 3: API Access\nThere are two scripts for collecting the data:\n\nCollect TMDB Movie IDs\npython src/stats386_final_movies/dataLoading/getMovieIDs.py\n\n\nUse those IDs to fetch full movie metadata\npython src/stats386_final_movies/dataLoading/getMovieData.py\nThis will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))\nCollecting all of the data and full movie metadata will take 50+ hours due to API rate limits"
+  },
+  {
+    "objectID": "tutorial.html#data-cleaning",
+    "href": "tutorial.html#data-cleaning",
+    "title": "Twenty-Years of Film",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\nNext, filter and clean the raw data to retain only relevant U.S. based movie information\npython src/stats386_final_movies/dataLoading/clean_movie_data.py\nThis will create: cleaned_movies.json - the cleaned dataset of about ~3,500 movies"
+  },
+  {
+    "objectID": "tutorial.html#analysis-visualization",
+    "href": "tutorial.html#analysis-visualization",
+    "title": "Twenty-Years of Film",
+    "section": "Analysis & Visualization",
+    "text": "Analysis & Visualization\nRun the analysis script to generate summary statistics and visualizations:\npython src/stats386_final_movies/analysis_and_visualization.py\nThis will: Print relevant stats about the dataset (average revenue, profit, etc…)\nGenerate plots of: Profit by year, Profit by genre, Top production companites by average profit"
+  },
+  {
+    "objectID": "tutorial.html#summary",
+    "href": "tutorial.html#summary",
+    "title": "Twenty-Years of Film",
+    "section": "Summary",
+    "text": "Summary\nBy following these steps, you can fully reproduce our data pipeline and run exploratory analysis on recent movie trends.\nThe project includes data cleaning, analysis, and installable pythong package, and a full documentation and technical report"
+  },
+  {
+    "objectID": "tutorial.html#pip-install--r-requirements.txt-or-use-pip-install--e-.-if-using-pyproject.toml",
+    "href": "tutorial.html#pip-install--r-requirements.txt-or-use-pip-install--e-.-if-using-pyproject.toml",
+    "title": "Twenty-Years of Film",
+    "section": "pip install -r requirements.txt # or use pip install -e . if using pyproject.toml",
+    "text": "pip install -r requirements.txt # or use pip install -e . if using pyproject.toml"
+  },
+  {
+    "objectID": "tutorial.html#step-3-api-data-collection",
+    "href": "tutorial.html#step-3-api-data-collection",
+    "title": "Twenty-Years of Film",
+    "section": "Step 3: API Data Collection",
+    "text": "Step 3: API Data Collection\nThere are two scripts for collecting the data:\n\nCollect TMDB Movie IDs\npython src/stats386_final_movies/dataLoading/getMovieIDs.py\n\n\nFetch Movie Metadata\npython src/stats386_final_movies/dataLoading/getMovieData.py\nThis will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))\nCollecting all of the data and full movie metadata will take 50+ hours due to API rate limits"
   }
 ]
