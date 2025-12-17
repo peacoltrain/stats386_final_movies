@@ -1,4 +1,5 @@
-# Movie Analysis Package (STAT 386 Final Project)
+# Movie Analysis Package (STAT 386 Final Project) 
+## Isaac Keenan & Nick Bell
 
 This project analyzes profitability trends in U.S. theatrical films released between 2005 and 2025 using data collected from the TMDB (The Movie Database) API. The project implements a complete data science pipeline including data collection, cleaning, analysis, visualization, documentation, and an interactive Streamlit app.
 
