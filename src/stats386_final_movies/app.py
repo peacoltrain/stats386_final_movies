@@ -32,17 +32,20 @@ st.write("Average profit:", f"${df['profit'].mean():,.2f}")
 st.header("Data Preview")
 st.dataframe(df.head(10))
 
-st.header("Profit Over Time")
-yearly_profit = df.groupby("year")["profit"].mean().reset_index()
-fig, ax = plt.subplots(figsize=(10, 5))
-sns.lineplot(data=yearly_profit, x="year", y="profit", ax=ax)
-ax.set_title("Average Profit by Year")
-ax.set_xlabel("Year")
-ax.set_ylabel("Average Profit")
-st.pyplot(fig)
+tab1, tab2 = st.tabs(["General Profit", "Year Filter"])
+with tab1:
+    st.header("Profit Over Time")
+    yearly_profit = df.groupby("year")["profit"].mean().reset_index()
+    fig, ax = plt.subplots(figsize=(10, 5))
+    sns.lineplot(data=yearly_profit, x="year", y="profit", ax=ax)
+    ax.set_title("Average Profit by Year")
+    ax.set_xlabel("Year")
+    ax.set_ylabel("Average Profit")
+    st.pyplot(fig)
 
-st.header("Filter by Year")
-selected_year = st.slider("Select Year", int(df["year"].min()), int(df["year"].max()), (2000, 2020))
-filtered_df = df[(df["year"] >= selected_year[0]) & (df["year"] <= selected_year[1])]
-st.write(f"Movies in selected years: {len(filtered_df)}")
-st.dataframe(filtered_df.head(10))
+with tab2:
+    st.header("Filter by Year")
+    selected_year = st.slider("Select Year", int(df["year"].min()), int(df["year"].max()), (2005, 2020))
+    filtered_df = df[(df["year"] >= selected_year[0]) & (df["year"] <= selected_year[1])]
+    st.write(f"Movies in selected years: {len(filtered_df)}")
+    st.dataframe(filtered_df.head(10))
