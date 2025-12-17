@@ -55,7 +55,7 @@ We first generated basic summary statistics on the cleaned dataset:
 - Average revenue: ~$91 million
 - Average profit: ~$57 million
 
-Add monetary values are reported in USD millions. The large gap between aerage budget and average revenue suggest that, on average, films are profitabel, but these averages are heavily influenced by a small  number of extremely successful movies, who greatly exceeed their budget. 
+Add monetary values are reported in USD millions. The large gap between aerage budget and average revenue suggest that, on average, films are profitabel, but these averages are heavily influenced by a small  number of extremely successful movies, who greatly exceeed their budget.  
 
 ## Profit Over Time
 
@@ -96,7 +96,7 @@ To quantify the relationship between production spending and financial return, w
 However, the wide spread of points indicates substantial variance, meaning higher budgets do not guarantee success. This result supports the idea that while budget enables scale and visibility, market reception remains uncertain.
 
 
-## Profit distribution by Decade
+### Profit distribution by Decade
 
 ![](src/stats386_final_movies/figures/analysis_and_visualization/profit_by_decade.png)
 
@@ -105,6 +105,24 @@ This boxplot shows how the distribution of movie profits has evolved across deca
 
 The increasing spread suggests that modern film production has become a higher-risk, higher-reward industry, where a small number of blockbuster films drive much of the total profitability.
 
+### Statistical Findings
+
+Looking beyond visual patterns, we ran a few statistical test to better understand relationships in the data. 
+
+#### Budget and Revenue
+
+We calculated the correlation between a movie's budget and its revenue. The results show a strong positive relationship (r = .743, p < 0.001), meaning that movies with larger budgets generally earn more at the box office.
+
+This relationship is not perfect. While higher budgets are often associated with higher revenue, there are many exceptions, and large budgets do not gaurantee financial success. 
+
+#### Action vs. Comedy Profitability
+
+We also compared the average profits of Action and Comedy movies using a two-sample t-test. The results t=4.21, p <.001 shows a significant difference between the two genres.  
+
+Action movies tend to be more profitable than Comedy movies on average. This likely reflects the broader appeal and franchise nature of many actions films, while most comedies are one off films or are targeted towards a specific audience. 
+
+
+
 
 # Conclusion
 
@@ -112,7 +130,7 @@ This project built a complete data science pipeline to analyze profitability tre
 
 Our analysis shows that average movie profitability increased steadily through the mid-2010s before experiencing a sharp decline around 2020, corresponding to disruptions caused by the COVID-19 pandemic. While profits partially recovered in subsequent years, the volatility observed highlights ongoing structural changes in the industry.
 
-Genre and production company analyses reveal that large-scale, franchise-driven films—particularly in action, adventure, and animation—tend to generate the highest average profits, while smaller, character-driven genres exhibit lower financial returns. Additionally, statistical analysis confirms a strong positive relationship between budget and revenue, though with substantial variability, reinforcing that high budgets do not guarantee success.
+Genre and production company analyses reveal that large scale, franchise films, particularly in action, adventure, and animation tend to generate the highest average profits, while smaller, character-driven genres exhibit lower financial returns. Additionally, statistical analysis confirms a strong positive relationship between budget and revenue, though with substantial variability, reinforcing that high budgets do not guarantee success.
 
-Overall, the results suggest that modern film production is a high-risk, high-reward environment dominated by a small number of blockbuster successes. Future work could extend this analysis by incorporating streaming revenue, international production trends, or inflation-adjusted financial metrics to better understand long-term industry dynamics.
+Overall, the results suggest that modern film production is a high risk, high-reward environment dominated by a small number of blockbuster successes. Future work could extend this analysis by incorporating streaming revenue, international production trends, or inflation-adjusted financial metrics to better understand long-term industry dynamics.
 
