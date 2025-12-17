@@ -6,4 +6,8 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "ipykernel>=7.1.0",
+    "streamlit",
+    "pandas",
+    "matplotlib",
+    "seaborn",
 ]
