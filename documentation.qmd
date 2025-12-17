@@ -82,6 +82,19 @@ Prints:
 #### Visualization: Top Production Companies
 - Bar plot of the top 15 production companies by average profit
 
+#### Visualization: Budget vs. Revenue
+- Scatterplot with regression line illustrating the relationship between production budget and box office revenue
+
+#### Visualization: Profit by Decade
+- Boxplot showing the distribution of movie profits by decade
+
+#### Statistical Analysis
+- Budget - Revenue Correlation: Computes a correlation coefficient to quantify the relationship between movie budget and revenue.
+- Genre Profit Comparison: Performs a two sample t-test comparing the average profits of Action and Comedy movies. 
+
+
+
+
 #### Helper Functions:
 - `extract_genres()`: Converts genre JSON into a list of genre names
 - `extract_companies()`: Converts production companies JSON into list of company names
