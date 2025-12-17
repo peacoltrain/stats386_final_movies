@@ -2,7 +2,9 @@ import json
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
+os.makedirs("figures/analysis_and_visualization", exist_ok=True)
 # === Load Cleaned Data ===
 df = pd.read_json("dataLoading/cleaned_movies.json")
 
@@ -38,6 +40,7 @@ plt.xlabel("Year")
 plt.ylabel("Average Profit")
 plt.grid(True)
 plt.tight_layout()
+plt.savefig("figures/analysis_and_visualization/profit_over_time.png")
 plt.show()
 
 # === Profit by Genre ===
@@ -59,6 +62,7 @@ plt.title("Average Profit by Genre")
 plt.xlabel("Average Profit")
 plt.ylabel("Genre")
 plt.tight_layout()
+plt.savefig("figures/analysis_and_visualization/profit_by_genre.png")
 plt.show()
 
 # === Profit by Production Company ===
@@ -81,4 +85,7 @@ plt.title("Top 15 Production Companies by Average Profit")
 plt.xlabel("Average Profit")
 plt.ylabel("Production Company")
 plt.tight_layout()
+plt.savefig("figures/analysis_and_visualization/profit_by_production_company.png")
 plt.show()
+
+# Save figures
