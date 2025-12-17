@@ -13,3 +13,4 @@ wheels/
 .env
 /docs/site_libs/
 **/*.quarto_ipynb
+src/stats386_final_movies/dataLoading/movies.json

@@ -5,5 +5,138 @@
     "title": "Twenty-Years of Film, STAT 386 Final",
     "section": "",
     "text": "Package Documentation\nGet started here\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "documentation.html",
+    "href": "documentation.html",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "This page documents the core functionality of our package, which collects, cleans, and analyzes movie metadata from TMDB. The dataset spans movies released between 2005 and 2025.\n\n\n\n\nPurpose:\nCollects TMDB movie IDs from a specified range of years and writes them to a text file.\nInputs: - start_year (int): Starting release year - end_year (int): Ending release year\nOutputs: - ids.txt file containing collected TMDB movie IDs\n\n\n\n\n\n\n\nPurpose:\nUses the TMDB API to fetch movie metadata for each ID in ids.txt and stores the data.\nInputs: - None (reads ids.txt)\nOutputs: - movies.json: Full movie metadata\n\n\n\n\n\n\n\nPurpose:\nCleans the full TMDB movie dataset by: - Filtering to U.S. movies with real budgets and revenues - Dropping movies missing release dates - Selecting only relevant fields (title, genres, revenue, etc.)\nInputs: - input_path: Path to raw movies.json - output_path: Path to cleaned output cleaned_movies.json\nOutput: - cleaned_movies.json: Final dataset with ~3,500 entries\n\n\n\n\n\nThis script performs all EDA (exploratory data analysis) and visualizations using the cleaned dataset.\n\n\n\nReads from cleaned_movies.json\nConverts release_date to datetime\nExtracts year column\nComputes profit = revenue - budget\n\n\n\n\nPrints: - Total number of movies - Average budget - Average revenue - Average profit\n\n\n\n\nLine plot showing the average movie profit over time (2005–2025)\n\n\n\n\n\nBar plot showing average profit for each movie genre\n\n\n\n\n\nBar plot of the top 15 production companies by average profit\n\n\n\n\n\nextract_genres(): Converts genre JSON into a list of genre names\nextract_companies(): Converts production companies JSON into list of company names\n\n\n\n\n\n\n\nFile | Description |\nids.txt | Movie IDs (raw list from TMDB) |\nmovies.json | Raw metadata for ~200K movies (not tracked in Git) |\ncleaned_movies.json | Final dataset used in analysis (3,503 entries) |\n\n\n\n\n\nThe dataset was collected using the TMDB API and filtered to U.S.-based theatrical releases with complete financial data.\nYou must provide your own TMDB API key to run the data collection scripts.\nmovies.json is excluded from version control due to size limits."
+  },
+  {
+    "objectID": "documentation.html#getmovieids.py",
+    "href": "documentation.html#getmovieids.py",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "Purpose:\nCollects TMDB movie IDs from a specified range of years and writes them to a text file.\nInputs: - start_year (int): Starting release year - end_year (int): Ending release year\nOutputs: - ids.txt file containing collected TMDB movie IDs"
+  },
+  {
+    "objectID": "documentation.html#getmoviedata.py",
+    "href": "documentation.html#getmoviedata.py",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "Purpose:\nUses the TMDB API to fetch movie metadata for each ID in ids.txt and stores the data.\nInputs: - None (reads ids.txt)\nOutputs: - movies.json: Full movie metadata"
+  },
+  {
+    "objectID": "documentation.html#clean_movie_data.py",
+    "href": "documentation.html#clean_movie_data.py",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "Purpose:\nCleans the full TMDB movie dataset by: - Filtering to U.S. movies with real budgets and revenues - Dropping movies missing release dates - Selecting only relevant fields (title, genres, revenue, etc.)\nInputs: - input_path: Path to raw movies.json - output_path: Path to cleaned output cleaned_movies.json\nOutput: - cleaned_movies.json: Final dataset with ~3,500 entries"
+  },
+  {
+    "objectID": "documentation.html#analysis_and_visualization.py",
+    "href": "documentation.html#analysis_and_visualization.py",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "This script performs all EDA (exploratory data analysis) and visualizations using the cleaned dataset.\n\n\n\nReads from cleaned_movies.json\nConverts release_date to datetime\nExtracts year column\nComputes profit = revenue - budget\n\n\n\n\nPrints: - Total number of movies - Average budget - Average revenue - Average profit\n\n\n\n\nLine plot showing the average movie profit over time (2005–2025)\n\n\n\n\n\nBar plot showing average profit for each movie genre\n\n\n\n\n\nBar plot of the top 15 production companies by average profit\n\n\n\n\n\nextract_genres(): Converts genre JSON into a list of genre names\nextract_companies(): Converts production companies JSON into list of company names"
+  },
+  {
+    "objectID": "documentation.html#data-files",
+    "href": "documentation.html#data-files",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "File | Description |\nids.txt | Movie IDs (raw list from TMDB) |\nmovies.json | Raw metadata for ~200K movies (not tracked in Git) |\ncleaned_movies.json | Final dataset used in analysis (3,503 entries) |"
+  },
+  {
+    "objectID": "documentation.html#notes",
+    "href": "documentation.html#notes",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "The dataset was collected using the TMDB API and filtered to U.S.-based theatrical releases with complete financial data.\nYou must provide your own TMDB API key to run the data collection scripts.\nmovies.json is excluded from version control due to size limits."
+  },
+  {
+    "objectID": "documentation.html#next-suggestions",
+    "href": "documentation.html#next-suggestions",
+    "title": "Movie Analysis Package Documentation",
+    "section": "",
+    "text": "Convert repeated code in analysis_and_visualization.py into functions (e.g., plot_profit_by_year(df))\nMove them into a utils.py module and import them into the script\n\n\nLet me know when you’ve pasted this in and rendered it with:\n```bash quarto preview"
+  },
+  {
+    "objectID": "src/stats386_final_movies/dataLoading/datacleaning.html",
+    "href": "src/stats386_final_movies/dataLoading/datacleaning.html",
+    "title": "Twenty-Years of Film",
+    "section": "",
+    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load cleaned dataset\ndf = pd.read_json(\"dataLoading/cleaned_movies.json\")\n\n# Convert release_date to datetime, extract year\ndf[\"release_date\"] = pd.to_datetime(df[\"release_date\"], errors=\"coerce\")\ndf[\"release_year\"] = df[\"release_date\"].dt.year\n\n# Drop rows with missing release_year\ndf = df.dropna(subset=[\"release_year\"])\n\n# Basic plot: Budget vs Revenue\nplt.figure(figsize=(10,6))\nplt.scatter(df[\"budget\"], df[\"revenue\"], alpha=0.5)\nplt.xlabel(\"Budget ($)\")\nplt.ylabel(\"Revenue ($)\")\nplt.title(\"Budget vs Revenue\")\nplt.grid(True)\nplt.show()\n\n\nRunning cells with '.venv (Python 3.12.3)' requires the ipykernel package.\n\nInstall 'ipykernel' into the Python environment. \n\nCommand: '/home/peely/386FinalProject/.venv/bin/python -m pip install ipykernel -U --force-reinstall'"
+  },
+  {
+    "objectID": "tutorial.html",
+    "href": "tutorial.html",
+    "title": "Twenty-Years of Film",
+    "section": "",
+    "text": "This tutorial will walk you through using the stats386_final_movies package — from collecting the data, cleaning it, and generating analysis and visualizations."
+  },
+  {
+    "objectID": "tutorial.html#step-1-clone-the-repository",
+    "href": "tutorial.html#step-1-clone-the-repository",
+    "title": "Twenty-Years of Film",
+    "section": "Step 1: Clone the Repository",
+    "text": "Step 1: Clone the Repository\nStart by cloning the repository from GitHub and installing the dependencies:\ngit clone git@github.com:peacoltrain/stats386_final_movies.git\ncd stats386_final_movies\npython3 -m venv .venv\nsource .venv/bin/activate\npip install -r requirements.txt # or use `pip install -e"
+  },
+  {
+    "objectID": "tutorial.html#start-by-cloning-the-repository-from-github-and-installing-the-dependencies",
+    "href": "tutorial.html#start-by-cloning-the-repository-from-github-and-installing-the-dependencies",
+    "title": "Twenty-Years of Film",
+    "section": "Start by cloning the repository from GitHub and installing the dependencies:",
+    "text": "Start by cloning the repository from GitHub and installing the dependencies:\ngit clone git@github.com:peacoltrain/stats386_final_movies.git\ncd stats386_final_movies\npython3 -m venv .venv\nsource .venv/bin/activate"
+  },
+  {
+    "objectID": "tutorial.html#step-2-api-access",
+    "href": "tutorial.html#step-2-api-access",
+    "title": "Twenty-Years of Film",
+    "section": "Step 2: API Access",
+    "text": "Step 2: API Access\nTo collect the data you will need to create a TMDB API key\n\nSign up at themoviedb.org\nGo to Settings &gt; API &gt; Create API Key\nInsert your API key into the .env file"
+  },
+  {
+    "objectID": "tutorial.html#step-3-api-access",
+    "href": "tutorial.html#step-3-api-access",
+    "title": "Twenty-Years of Film",
+    "section": "Step 3: API Access",
+    "text": "Step 3: API Access\nThere are two scripts for collecting the data:\n\nCollect TMDB Movie IDs\npython src/stats386_final_movies/dataLoading/getMovieIDs.py\n\n\nUse those IDs to fetch full movie metadata\npython src/stats386_final_movies/dataLoading/getMovieData.py\nThis will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))\nCollecting all of the data and full movie metadata will take 50+ hours due to API rate limits"
+  },
+  {
+    "objectID": "tutorial.html#data-cleaning",
+    "href": "tutorial.html#data-cleaning",
+    "title": "Twenty-Years of Film",
+    "section": "Data Cleaning",
+    "text": "Data Cleaning\nNext, filter and clean the raw data to retain only relevant U.S. based movie information\npython src/stats386_final_movies/dataLoading/clean_movie_data.py\nThis will create: cleaned_movies.json - the cleaned dataset of about ~3,500 movies"
+  },
+  {
+    "objectID": "tutorial.html#analysis-visualization",
+    "href": "tutorial.html#analysis-visualization",
+    "title": "Twenty-Years of Film",
+    "section": "Analysis & Visualization",
+    "text": "Analysis & Visualization\nRun the analysis script to generate summary statistics and visualizations:\npython src/stats386_final_movies/analysis_and_visualization.py\nThis will: Print relevant stats about the dataset (average revenue, profit, etc…)\nGenerate plots of: Profit by year, Profit by genre, Top production companites by average profit"
+  },
+  {
+    "objectID": "tutorial.html#summary",
+    "href": "tutorial.html#summary",
+    "title": "Twenty-Years of Film",
+    "section": "Summary",
+    "text": "Summary\nBy following these steps, you can fully reproduce our data pipeline and run exploratory analysis on recent movie trends.\nThe project includes data cleaning, analysis, and installable pythong package, and a full documentation and technical report"
+  },
+  {
+    "objectID": "tutorial.html#pip-install--r-requirements.txt-or-use-pip-install--e-.-if-using-pyproject.toml",
+    "href": "tutorial.html#pip-install--r-requirements.txt-or-use-pip-install--e-.-if-using-pyproject.toml",
+    "title": "Twenty-Years of Film",
+    "section": "pip install -r requirements.txt # or use pip install -e . if using pyproject.toml",
+    "text": "pip install -r requirements.txt # or use pip install -e . if using pyproject.toml"
+  },
+  {
+    "objectID": "tutorial.html#step-3-api-data-collection",
+    "href": "tutorial.html#step-3-api-data-collection",
+    "title": "Twenty-Years of Film",
+    "section": "Step 3: API Data Collection",
+    "text": "Step 3: API Data Collection\nThere are two scripts for collecting the data:\n\nCollect TMDB Movie IDs\npython src/stats386_final_movies/dataLoading/getMovieIDs.py\n\n\nFetch Movie Metadata\npython src/stats386_final_movies/dataLoading/getMovieData.py\nThis will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))\nCollecting all of the data and full movie metadata will take 50+ hours due to API rate limits"
   }
 ]

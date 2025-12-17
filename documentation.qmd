@@ -1,3 +1,108 @@
 ---
 Title: "Movie Analysis Package"
+format: html
 ---
+
+# Movie Analysis Package Documentation
+
+This page documents the core functionality of our package, which collects, cleans, and analyzes movie metadata from TMDB. The dataset spans movies released between 2005 and 2025.
+
+
+## 🔹 `getMovieIDs.py`
+
+### Function: `get_movie_ids(start_year, end_year)`
+
+**Purpose:**  
+Collects TMDB movie IDs from a specified range of years and writes them to a text file.
+
+**Inputs:**
+- `start_year` (int): Starting release year
+- `end_year` (int): Ending release year
+
+**Outputs:**
+- `ids.txt` file containing collected TMDB movie IDs
+
+---
+
+## 🔹 `getMovieData.py`
+
+### Function: `get_movie_data()`
+**Purpose:**  
+Uses the TMDB API to fetch movie metadata for each ID in `ids.txt` and stores the data.
+
+**Inputs:**
+- None (reads `ids.txt`)
+
+**Outputs:**
+- `movies.json`: Full movie metadata
+
+---
+
+## 🔹 `clean_movie_data.py`
+
+### Function: `clean_movie_data(input_path, output_path)`
+**Purpose:**  
+Cleans the full TMDB movie dataset by:
+- Filtering to U.S. movies with real budgets and revenues
+- Dropping movies missing release dates
+- Selecting only relevant fields (title, genres, revenue, etc.)
+
+**Inputs:**
+- `input_path`: Path to raw `movies.json`
+- `output_path`: Path to cleaned output `cleaned_movies.json`
+
+**Output:**
+- `cleaned_movies.json`: Final dataset with ~3,500 entries
+
+---
+
+## 🔹 `analysis_and_visualization.py`
+
+This script performs all EDA (exploratory data analysis) and visualizations using the cleaned dataset. 
+
+#### Load & Prepare Data
+- Reads from `cleaned_movies.json`
+- Converts `release_date` to datetime
+- Extracts `year` column
+- Computes `profit = revenue - budget`
+
+#### Summary Statistics
+Prints:
+- Total number of movies
+- Average budget
+- Average revenue
+- Average profit
+
+#### Visualization: Average Profit by Year
+- Line plot showing the average movie profit over time (2005–2025)
+
+#### Visualization: Average Profit by Genre
+- Bar plot showing average profit for each movie genre
+
+#### Visualization: Top Production Companies
+- Bar plot of the top 15 production companies by average profit
+
+#### Helper Functions:
+- `extract_genres()`: Converts genre JSON into a list of genre names
+- `extract_companies()`: Converts production companies JSON into list of company names
+
+---
+
+
+---
+
+## Data Files
+
+| File | Description |
+| `ids.txt` | Movie IDs (raw list from TMDB) |
+| `movies.json` | Raw metadata for ~200K movies (not tracked in Git) |
+| `cleaned_movies.json` | Final dataset used in analysis (3,503 entries) |
+
+---
+
+## Notes
+
+- The dataset was collected using the TMDB API and filtered to U.S.-based theatrical releases with complete financial data.
+- You must provide your own TMDB API key to run the data collection scripts.
+- `movies.json` is excluded from version control due to size limits.
+

@@ -1,3 +1,75 @@
 ---
 Title: "Package Tutorial and Example"
 ---
+
+This tutorial will walk you through using the `stats386_final_movies` package — from collecting the data, cleaning it, and generating analysis and visualizations.
+
+---
+
+## Step 1: Clone the Repository
+
+Start by cloning the repository from GitHub and installing the dependencies:
+
+git clone git@github.com:peacoltrain/stats386_final_movies.git
+
+cd stats386_final_movies
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+pip install -r requirements.txt  # or use `pip install -e
+
+
+
+## Step 2: API Access
+
+To collect the data you will need to create a TMDB API key
+
+- Sign up at themoviedb.org
+- Go to Settings > API > Create API Key
+- Insert your API key into the .env file
+
+
+## Step 3: API Data Collection
+
+There are two scripts for collecting the data: 
+
+### Collect TMDB Movie IDs
+
+python src/stats386_final_movies/dataLoading/getMovieIDs.py
+
+
+### Fetch Movie Metadata
+
+python src/stats386_final_movies/dataLoading/getMovieData.py
+
+This will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))
+
+Collecting all of the data and full movie metadata will take 50+ hours due to API rate limits 
+
+## Data Cleaning
+
+Next, filter and clean the raw data to retain only relevant U.S. based movie information
+
+python src/stats386_final_movies/dataLoading/clean_movie_data.py
+
+This will create: cleaned_movies.json - the cleaned dataset of about ~3,500 movies
+
+## Analysis & Visualization
+
+Run the analysis script to generate summary statistics and visualizations:
+
+python src/stats386_final_movies/analysis_and_visualization.py
+
+This will: Print relevant stats about the dataset (average revenue, profit, etc...)
+
+Generate plots of: Profit by year, Profit by genre, Top production companites by average profit
+
+
+## Summary 
+
+By following these steps, you can fully reproduce our data pipeline and run exploratory analysis on recent movie trends. 
+
+The project includes data cleaning, analysis, and installable pythong package, and a full documentation and technical report
+
