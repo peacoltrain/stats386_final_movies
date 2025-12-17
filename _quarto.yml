@@ -1,6 +1,11 @@
 project:
   type: website
   output-dir: docs
+  render:
+  - index.qmd
+  - documentation.qmd
+  - tutorial.qmd
+  - technicalReport.qmd
 
 website:
   title: "Twenty-Years of Film"

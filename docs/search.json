@@ -1,10 +1,52 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Twenty-Years of Film, STAT 386 Final",
+    "objectID": "technicalReport.html",
+    "href": "technicalReport.html",
+    "title": "Movie Analysis Package",
     "section": "",
-    "text": "Package Documentation\nGet started here\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "The film industry has undergone dramatic changes over the past two decades. From the rise of streaming platforms to shifts in genre popularity and production trends, understanding what drives profitability in cinema is crucial for directors, actors, producers, etc. This project explores a large dataset of theatrical movie releases from 2005 to 2025, using data collected from the TMDB (The Movie Database(themoivedb.org)) API. Our goal was to build a full data science pipeline, from raw collection to analysis and visualizations. To highlight patterns in budget, revenue, and profitability over time."
+  },
+  {
+    "objectID": "technicalReport.html#summary-statistics",
+    "href": "technicalReport.html#summary-statistics",
+    "title": "Movie Analysis Package",
+    "section": "Summary Statistics",
+    "text": "Summary Statistics\nWe first generated basic summary statistics on the cleaned dataset:\n\nTotal movies: 3,503\nAverage budget: ~$34 million\nAverage revenue: ~$91 million\nAverage profit: ~$57 million\n\nAdd monetary values are reported in USD millions. The large gap between aerage budget and average revenue suggest that, on average, films are profitabel, but these averages are heavily influenced by a small number of extremely successful movies, who greatly exceeed their budget."
+  },
+  {
+    "objectID": "technicalReport.html#profit-over-time",
+    "href": "technicalReport.html#profit-over-time",
+    "title": "Movie Analysis Package",
+    "section": "Profit Over Time",
+    "text": "Profit Over Time\n\nThis figure shows the average movie profit by year from 2005 to 2025. There is a clear upward trend in profitability through the mid-2010s, reflecting increasing budgets, global box office expansion, and franchise-driven releases.\nA sharp decline occurs around 2020, corresponding to the COVID-19 pandemic, which severely disrupted theatrical releases. While profits recover in subsequent years, they do not immediately return to pre-pandemic levels, suggesting a structural shift in the film industry."
+  },
+  {
+    "objectID": "technicalReport.html#average-profit-by-genre",
+    "href": "technicalReport.html#average-profit-by-genre",
+    "title": "Movie Analysis Package",
+    "section": "Average Profit by Genre",
+    "text": "Average Profit by Genre\n\nThis plot compares average profitability across genres. Action, Adventure, and Animation films tend to generate the highest average profits, likely due to their global appeal and franchise potential.\nIn contrast, genres such as Drama and Romance show lower average profits, reflecting smaller budgets and more limited box office reach. This highlights how genre selection plays a significant role in financial outcomes."
+  },
+  {
+    "objectID": "technicalReport.html#top-production-companies-by-profitability",
+    "href": "technicalReport.html#top-production-companies-by-profitability",
+    "title": "Movie Analysis Package",
+    "section": "Top Production Companies by Profitability",
+    "text": "Top Production Companies by Profitability\n\nThis figure shows the top 15 production companies ranked by average profit per film. Larger studios and productions houses dominate the list, benefiting from scale, marketing power, and established intellectual property.\nHowever, the presence of variability within companies suggest that even major studios experience hits and duds at the box office, which shows the inherent risk of film production."
+  },
+  {
+    "objectID": "technicalReport.html#statistical-analysis",
+    "href": "technicalReport.html#statistical-analysis",
+    "title": "Movie Analysis Package",
+    "section": "Statistical Analysis",
+    "text": "Statistical Analysis\n\nBudget vs. Revenue Relationship\n\nTo quantify the relationship between production spending and financial return, we examined the correlation between budget and revenue. The scatterplot reveals a strong positive relationship: films with larger budgets tend to generate higher revenues.\nHowever, the wide spread of points indicates substantial variance, meaning higher budgets do not guarantee success. This result supports the idea that while budget enables scale and visibility, market reception remains uncertain."
+  },
+  {
+    "objectID": "technicalReport.html#profit-distribution-by-decade",
+    "href": "technicalReport.html#profit-distribution-by-decade",
+    "title": "Movie Analysis Package",
+    "section": "Profit distribution by Decade",
+    "text": "Profit distribution by Decade\n\nThis boxplot shows how the distribution of movie profits has evolved across decades. More recent decades exhibit higher median profits but also significantly greater variability and more extreme outliers.\nThe increasing spread suggests that modern film production has become a higher-risk, higher-reward industry, where a small number of blockbuster films drive much of the total profitability."
   },
   {
     "objectID": "documentation.html",
@@ -56,18 +98,11 @@
     "text": "The dataset was collected using the TMDB API and filtered to U.S.-based theatrical releases with complete financial data.\nYou must provide your own TMDB API key to run the data collection scripts.\nmovies.json is excluded from version control due to size limits."
   },
   {
-    "objectID": "documentation.html#next-suggestions",
-    "href": "documentation.html#next-suggestions",
-    "title": "Movie Analysis Package Documentation",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Twenty-Years of Film, STAT 386 Final",
     "section": "",
-    "text": "Convert repeated code in analysis_and_visualization.py into functions (e.g., plot_profit_by_year(df))\nMove them into a utils.py module and import them into the script\n\n\nLet me know when you’ve pasted this in and rendered it with:\n```bash quarto preview"
-  },
-  {
-    "objectID": "src/stats386_final_movies/dataLoading/datacleaning.html",
-    "href": "src/stats386_final_movies/dataLoading/datacleaning.html",
-    "title": "Twenty-Years of Film",
-    "section": "",
-    "text": "import pandas as pd\nimport matplotlib.pyplot as plt\n\n# Load cleaned dataset\ndf = pd.read_json(\"dataLoading/cleaned_movies.json\")\n\n# Convert release_date to datetime, extract year\ndf[\"release_date\"] = pd.to_datetime(df[\"release_date\"], errors=\"coerce\")\ndf[\"release_year\"] = df[\"release_date\"].dt.year\n\n# Drop rows with missing release_year\ndf = df.dropna(subset=[\"release_year\"])\n\n# Basic plot: Budget vs Revenue\nplt.figure(figsize=(10,6))\nplt.scatter(df[\"budget\"], df[\"revenue\"], alpha=0.5)\nplt.xlabel(\"Budget ($)\")\nplt.ylabel(\"Revenue ($)\")\nplt.title(\"Budget vs Revenue\")\nplt.grid(True)\nplt.show()\n\n\nRunning cells with '.venv (Python 3.12.3)' requires the ipykernel package.\n\nInstall 'ipykernel' into the Python environment. \n\nCommand: '/home/peely/386FinalProject/.venv/bin/python -m pip install ipykernel -U --force-reinstall'"
+    "text": "Package Documentation\nGet started here\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
   },
   {
     "objectID": "tutorial.html",
@@ -84,13 +119,6 @@
     "text": "Step 1: Clone the Repository\nStart by cloning the repository from GitHub and installing the dependencies:\ngit clone git@github.com:peacoltrain/stats386_final_movies.git\ncd stats386_final_movies\npython3 -m venv .venv\nsource .venv/bin/activate\npip install -r requirements.txt # or use `pip install -e"
   },
   {
-    "objectID": "tutorial.html#start-by-cloning-the-repository-from-github-and-installing-the-dependencies",
-    "href": "tutorial.html#start-by-cloning-the-repository-from-github-and-installing-the-dependencies",
-    "title": "Twenty-Years of Film",
-    "section": "Start by cloning the repository from GitHub and installing the dependencies:",
-    "text": "Start by cloning the repository from GitHub and installing the dependencies:\ngit clone git@github.com:peacoltrain/stats386_final_movies.git\ncd stats386_final_movies\npython3 -m venv .venv\nsource .venv/bin/activate"
-  },
-  {
     "objectID": "tutorial.html#step-2-api-access",
     "href": "tutorial.html#step-2-api-access",
     "title": "Twenty-Years of Film",
@@ -98,11 +126,11 @@
     "text": "Step 2: API Access\nTo collect the data you will need to create a TMDB API key\n\nSign up at themoviedb.org\nGo to Settings &gt; API &gt; Create API Key\nInsert your API key into the .env file"
   },
   {
-    "objectID": "tutorial.html#step-3-api-access",
-    "href": "tutorial.html#step-3-api-access",
+    "objectID": "tutorial.html#step-3-api-data-collection",
+    "href": "tutorial.html#step-3-api-data-collection",
     "title": "Twenty-Years of Film",
-    "section": "Step 3: API Access",
-    "text": "Step 3: API Access\nThere are two scripts for collecting the data:\n\nCollect TMDB Movie IDs\npython src/stats386_final_movies/dataLoading/getMovieIDs.py\n\n\nUse those IDs to fetch full movie metadata\npython src/stats386_final_movies/dataLoading/getMovieData.py\nThis will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))\nCollecting all of the data and full movie metadata will take 50+ hours due to API rate limits"
+    "section": "Step 3: API Data Collection",
+    "text": "Step 3: API Data Collection\nThere are two scripts for collecting the data:\n\nCollect TMDB Movie IDs\npython src/stats386_final_movies/dataLoading/getMovieIDs.py\n\n\nFetch Movie Metadata\npython src/stats386_final_movies/dataLoading/getMovieData.py\nThis will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))\nCollecting all of the data and full movie metadata will take 50+ hours due to API rate limits"
   },
   {
     "objectID": "tutorial.html#data-cleaning",
@@ -124,19 +152,5 @@
     "title": "Twenty-Years of Film",
     "section": "Summary",
     "text": "Summary\nBy following these steps, you can fully reproduce our data pipeline and run exploratory analysis on recent movie trends.\nThe project includes data cleaning, analysis, and installable pythong package, and a full documentation and technical report"
-  },
-  {
-    "objectID": "tutorial.html#pip-install--r-requirements.txt-or-use-pip-install--e-.-if-using-pyproject.toml",
-    "href": "tutorial.html#pip-install--r-requirements.txt-or-use-pip-install--e-.-if-using-pyproject.toml",
-    "title": "Twenty-Years of Film",
-    "section": "pip install -r requirements.txt # or use pip install -e . if using pyproject.toml",
-    "text": "pip install -r requirements.txt # or use pip install -e . if using pyproject.toml"
-  },
-  {
-    "objectID": "tutorial.html#step-3-api-data-collection",
-    "href": "tutorial.html#step-3-api-data-collection",
-    "title": "Twenty-Years of Film",
-    "section": "Step 3: API Data Collection",
-    "text": "Step 3: API Data Collection\nThere are two scripts for collecting the data:\n\nCollect TMDB Movie IDs\npython src/stats386_final_movies/dataLoading/getMovieIDs.py\n\n\nFetch Movie Metadata\npython src/stats386_final_movies/dataLoading/getMovieData.py\nThis will generate: ids.txt - list of movie IDs and movies.json - full raw movie data (contains over 200,000 entries, (this will not be tracked in Git))\nCollecting all of the data and full movie metadata will take 50+ hours due to API rate limits"
   }
 ]
