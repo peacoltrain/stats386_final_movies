@@ -53,7 +53,7 @@ with tab2:
 with tab3:
     st.header("Budget vs Revenue Scatter Plot")
     df['profit_positive'] = df['profit'] > 0
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(10, 10))
     sns.scatterplot(data=df, x="budget", y="revenue", hue="profit_positive", ax=ax, palette={True: 'green', False: 'red'}, alpha=.5)
     sns.regplot(data=df, x="budget", y="revenue", ax=ax, scatter=False, color='black', line_kws={'linewidth':2})
     ax.set_title("Budget vs Revenue Colored by Profit")
