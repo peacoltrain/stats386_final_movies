@@ -95,7 +95,21 @@
     "href": "index.html",
     "title": "Twenty-Years of Film, STAT 386 Final",
     "section": "",
-    "text": "Package Documentation\nGet started here\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Our final project for STAT386 analyzes profitability trends in U.S. theatrical films released between 2005 and 2025 using data collected from the TMDB (The Movie Database) API."
+  },
+  {
+    "objectID": "index.html#stat-386-final-project",
+    "href": "index.html#stat-386-final-project",
+    "title": "Twenty-Years of Film, STAT 386 Final",
+    "section": "",
+    "text": "Our final project for STAT386 analyzes profitability trends in U.S. theatrical films released between 2005 and 2025 using data collected from the TMDB (The Movie Database) API."
+  },
+  {
+    "objectID": "index.html#navigate-the-project",
+    "href": "index.html#navigate-the-project",
+    "title": "Twenty-Years of Film, STAT 386 Final",
+    "section": "Navigate the Project",
+    "text": "Navigate the Project\nDocumentation - Details on data collection, cleaning, and analysis scripts Documentation\nTutorial - How to use the package and run the analysis Tutorial\nTechnical Report - Final written report with results, graphs, and intpretations Technical Report"
   },
   {
     "objectID": "tutorial.html",
