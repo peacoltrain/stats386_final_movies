@@ -1,7 +1,7 @@
 [project]
 name = "386finalproject"
 version = "0.1.0"
-description = "Add your description here"
+description = "First iteration of final project for Stats 386"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
