@@ -2,8 +2,15 @@
 title: "Twenty-Years of Film, STAT 386 Final"
 ---
 
-Package [Documentation](documentation.qmd)
+## STAT 386 Final Project
 
-Get started [here](tutorial.qmd)
+Our final project for STAT386 analyzes profitability trends in U.S. theatrical films released between 2005 and 2025 using data collected from the TMDB (The Movie Database) API.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+## Navigate the Project 
+
+**Documentation** - Details on data collection, cleaning, and analysis scripts [Documentation](documentation.qmd)
+
+**Tutorial** - How to use the package and run the analysis [Tutorial](tutorial.qmd)
+
+**Technical Report** - Final written report with results, graphs, and intpretations [Technical Report](technicalReport.qmd)

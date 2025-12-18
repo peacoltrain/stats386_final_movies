@@ -1,7 +1,11 @@
-#This will be the file in which we can make our pipline and other functions available
+"""
+stats386_final_movies
 
-#use formate from .scriptName import listOfFunctions
+Movie data analysis and visualization package for STAT 386.
+"""
 
-#Add string of function name to __all__ when ready to add
+from .analysis_and_visualization import run_analysis_and_visualization
+
 __all__ = [
+    "run_analysis_and_visualization",
 ]

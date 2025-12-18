@@ -25,9 +25,9 @@ st.title("Movie Data Exploration App")
 
 st.header("Summary Statistics")
 st.write("Total movies:", len(df))
-st.write("Average budget:", f"${df['budget'].mean():,.2f}")
-st.write("Average revenue:", f"${df['revenue'].mean():,.2f}")
-st.write("Average profit:", f"${df['profit'].mean():,.2f}")
+st.write("Average budget (USD Millions):", f"{df['budget'].mean() / 1e6:.1f}")
+st.write("Average revenue (USD Millions):", f"{df['revenue'].mean() / 1e6:.1f}")
+st.write("Average profit (USD Millions):", f"{df['profit'].mean() / 1e6:.1f}")
 
 st.header("Data Preview")
 st.dataframe(df.head(10))
