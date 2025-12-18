@@ -13,3 +13,5 @@ dependencies = [
     "scipy",
     "requests"
 ]
+[tool.setuptools.package-data]
+stats386_final_movies = ["dataLoading/*.json"]
